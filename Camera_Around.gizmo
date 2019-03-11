@@ -1,0 +1,59 @@
+Group {
+ inputs 0
+ name Camera_Around
+ tile_color 0xea6827ff
+ selected true
+ xpos 12280
+ ypos -1090
+ addUserKnob {20 User l Settings}
+ addUserKnob {41 translate l Center t "Allows you to adjust the center point." T ca1.translate}
+ addUserKnob {7 dis_cam l Distance t "Allows you to adjust the camera`s distance from the center point." R 0 100}
+ dis_cam 20
+ addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height compared to the horizon." R -50 50}
+ hei_cam 2
+ addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
+ ang_cam -5
+ addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R 0 50}
+ spe_cam 1
+ addUserKnob {26 ""}
+ addUserKnob {26 info l "" +STARTLINE T "Connect the Camera`s Axis input to the node\nto get your Camera rotate around the Center point."}
+ addUserKnob {26 ""}
+ addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 version</font>"}
+ addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">Camera Around© by Attila Gasparetz</font>"}
+}
+ Axis2 {
+  inputs 0
+  name ca1
+  xpos 410
+  ypos 234
+ }
+ Axis2 {
+  translate {{parent.dis_cam} 0 0}
+  rotate {0 {frame*ca0.slid01} 0}
+  pivot {{-(translate.x)} 0 0}
+  name ca2
+  xpos 410
+  ypos 354
+ }
+ Axis2 {
+  translate {0 {hei_cam} 0}
+  rotate {{ang_cam} 90 0}
+  name ca3
+  xpos 410
+  ypos 474
+ }
+ Output {
+  name ca4
+  xpos 400
+  ypos 590
+ }
+ NoOp {
+  inputs 0
+  name ca0
+  xpos 620
+  ypos 374
+  addUserKnob {20 User}
+  addUserKnob {7 slid01 l slider01 R 0 50}
+  slid01 {{spe_cam}}
+ }
+end_group
