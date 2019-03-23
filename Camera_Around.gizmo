@@ -12,13 +12,15 @@ Group {
  addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height compared to the horizon." R -50 50}
  addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
  addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R 0 50}
- spe_cam 2
- addUserKnob {7 cam_tilt l Tilt R -90 90}
- addUserKnob {7 osset l Offset R 0 360}
+ spe_cam 1.5
+ addUserKnob {7 cam_tilt l Tilt t "Allows you to tilt the camera " R -90 90}
+ addUserKnob {7 osset l Offset t "Allows you to offset the camera. " R 0 360}
  addUserKnob {41 translate_1 l Look T ca_look.translate}
  addUserKnob {41 disable_1 l "Disable Look" T ca_look.disable}
  addUserKnob {26 ""}
  addUserKnob {26 info l "" +STARTLINE T "Connect the Camera`s Axis input to the node\nto get your Camera rotate around the Center point."}
+ addUserKnob {26 ""}
+ addUserKnob {22 tut l Tutorial t "Opens the relevant tutorial from my site in your browser. " -STARTLINE T "import os\nimport sys\n\ntry:\n    import subprocess\n    def _run(cmd, shell, wait):\n        opener = subprocess.Popen(cmd, shell=shell)\n        if wait:\n            opener.wait()\n        return opener.pid\nexcept ImportError:\n    import popen2\n    def _run(cmd, shell, wait):\n        opener = popen2.Popen3(cmd)\n        if wait:\n            opener.wait()\n        return opener.pid\n\ndef _open(url, wait=0):\n    if sys.platform == \"darwin\":\n        cmd = \[\"open\", url]\n    elif hasattr(os, \"startfile\"):\n        return os.startfile(url)\n    elif os.environ.has_key(\"KDE_FULL_SESSION\") or os.environ.has_key(\"KDE_MULTIHEAD\") or \\\n        os.environ.has_key(\"GNOME_DESKTOP_SESSION_ID\") or os.environ.has_key(\"GNOME_KEYRING_SOCKET\"):\n        cmd = \[\"xdg-open\", url]\n    else:\n        raise OSError, \"Desktop not supported.\"\n\n    return _run(cmd, 0, wait)\n\n_open('https://www.gatimedia.co.uk/camera-around')\n"}
  addUserKnob {26 ""}
  addUserKnob {26 TEXT l "" +STARTLINE T "<font color=#808080 size=\"5\" >1.01 version</font>"}
  addUserKnob {26 HeadlineB l "" +STARTLINE T "<font color=#808080 size=\"2\">Camera Around© by Attila Gasparetz</font>"}
@@ -31,7 +33,6 @@ Group {
  }
  Axis2 {
   inputs 0
-  translate {0 0.6 0}
   rotate {0 {parent.osset} 0}
   name ca1
   selected true
@@ -46,8 +47,8 @@ Group {
   xpos 410
   ypos 354
  }
-set Nd54d9180 [stack 0]
-push $Nd54d9180
+set Ndd2cc380 [stack 0]
+push $Ndd2cc380
  Axis2 {
   inputs 2
   translate {0 {hei_cam} 0}
