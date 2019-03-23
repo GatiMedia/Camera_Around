@@ -3,18 +3,20 @@ Group {
  name Camera_Around
  tile_color 0xea6827ff
  selected true
- xpos 12280
- ypos -1090
+ xpos 4690
+ ypos 350
  addUserKnob {20 User l Settings}
  addUserKnob {41 translate l Center t "Allows you to adjust the center point." T ca1.translate}
  addUserKnob {7 dis_cam l Distance t "Allows you to adjust the camera`s distance from the center point." R 0 100}
- dis_cam 20
+ dis_cam 10
  addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height compared to the horizon." R -50 50}
- hei_cam 2
  addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
- ang_cam -5
  addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R 0 50}
- spe_cam 1
+ spe_cam 2
+ addUserKnob {7 cam_tilt l Tilt R -90 90}
+ addUserKnob {7 osset l Offset R 0 360}
+ addUserKnob {41 translate_1 l Look T ca_look.translate}
+ addUserKnob {41 disable_1 l "Disable Look" T ca_look.disable}
  addUserKnob {26 ""}
  addUserKnob {26 info l "" +STARTLINE T "Connect the Camera`s Axis input to the node\nto get your Camera rotate around the Center point."}
  addUserKnob {26 ""}
@@ -23,9 +25,18 @@ Group {
 }
  Axis2 {
   inputs 0
+  name ca_look
+  xpos 300
+  ypos 546
+ }
+ Axis2 {
+  inputs 0
+  translate {0 0.6 0}
+  rotate {0 {parent.osset} 0}
   name ca1
+  selected true
   xpos 410
-  ypos 234
+  ypos 258
  }
  Axis2 {
   translate {{parent.dis_cam} 0 0}
@@ -35,17 +46,42 @@ Group {
   xpos 410
   ypos 354
  }
+set Nd54d9180 [stack 0]
+push $Nd54d9180
  Axis2 {
+  inputs 2
   translate {0 {hei_cam} 0}
   rotate {{ang_cam} 90 0}
+  look_rotate_x false
+  look_rotate_y false
   name ca3
   xpos 410
-  ypos 474
+  ypos 450
+ }
+ Axis2 {
+  inputs 2
+  name ca5
+  xpos 410
+  ypos 546
+  disable {{ca_look.disable}}
+ }
+ Axis2 {
+  rotate {0 180 0}
+  name ca6
+  xpos 410
+  ypos 642
+  disable {{ca_look.disable}}
+ }
+ Axis2 {
+  rotate {0 0 {parent.cam_tilt}}
+  name ca7
+  xpos 410
+  ypos 738
  }
  Output {
   name ca4
   xpos 400
-  ypos 590
+  ypos 902
  }
  NoOp {
   inputs 0
