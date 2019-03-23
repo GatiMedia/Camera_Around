@@ -2,17 +2,17 @@ Group {
  inputs 0
  name Camera_Around
  tile_color 0xea6827ff
- selected true
- xpos 4690
- ypos 350
+ selected false
+ xpos 1390
+ ypos 926
  addUserKnob {20 User l Settings}
  addUserKnob {41 translate l Center t "Allows you to adjust the center point." T ca1.translate}
  addUserKnob {7 dis_cam l Distance t "Allows you to adjust the camera`s distance from the center point." R 0 100}
- dis_cam 10
+ dis_cam 5
  addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height compared to the horizon." R -50 50}
  addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
- addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R 0 50}
- spe_cam 1.5
+ addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R -50 50}
+ spe_cam 2
  addUserKnob {7 cam_tilt l Tilt t "Allows you to tilt the camera " R -90 90}
  addUserKnob {7 osset l Offset t "Allows you to offset the camera. " R 0 360}
  addUserKnob {41 translate_1 l Look T ca_look.translate}
@@ -47,8 +47,8 @@ Group {
   xpos 410
   ypos 354
  }
-set Ndd2cc380 [stack 0]
-push $Ndd2cc380
+set N75e88a80 [stack 0]
+push $N75e88a80
  Axis2 {
   inputs 2
   translate {0 {hei_cam} 0}
