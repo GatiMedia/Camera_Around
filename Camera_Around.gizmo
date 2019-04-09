@@ -1,22 +1,24 @@
 Group {
- inputs 0
  name Camera_Around
  tile_color 0xea6827ff
- selected false
- xpos 1390
- ypos 926
+ xpos 6670
+ ypos 8654
  addUserKnob {20 User l Settings}
  addUserKnob {41 translate l Center t "Allows you to adjust the center point." T ca1.translate}
  addUserKnob {7 dis_cam l Distance t "Allows you to adjust the camera`s distance from the center point." R 0 100}
- dis_cam 5
- addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height compared to the horizon." R -50 50}
- addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
+ dis_cam 8
+ addUserKnob {7 hei_cam l Height t "Allows you to adjust the camera`s height on the Y-axis." R -50 50}
+ hei_cam 4
  addUserKnob {7 spe_cam l Speed t "Allows you to adjust the velocity of the rotation." R -50 50}
  spe_cam 2
- addUserKnob {7 cam_tilt l Tilt t "Allows you to tilt the camera " R -90 90}
- addUserKnob {7 osset l Offset t "Allows you to offset the camera. " R 0 360}
- addUserKnob {41 translate_1 l Look T ca_look.translate}
- addUserKnob {41 disable_1 l "Disable Look" T ca_look.disable}
+ addUserKnob {7 cam_tilt l Tilt t "Allows you to tilt the camera." R -90 90}
+ addUserKnob {7 offset l Offset t "Allows you to offset the camera. " R 0 360}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {7 ang_cam l Angle t "Allows you to adjust the camera`s angle." R -90 90}
+ addUserKnob {26 ang_info l "" +STARTLINE T "You can adjust the camera here when the `Disable Look` is on."}
+ addUserKnob {26 "" +STARTLINE}
+ addUserKnob {41 translate_1 l Look t "Allows you to define where the camera is facing. " T ca_look.translate}
+ addUserKnob {41 disable_1 l "Disable Look" t "Allows you to disable the use of `Look` and change where the camera`s facing with the `Angle`. " T ca_look.disable}
  addUserKnob {26 ""}
  addUserKnob {26 info l "" +STARTLINE T "Connect the Camera`s Axis input to the node\nto get your Camera rotate around the Center point."}
  addUserKnob {26 ""}
@@ -47,8 +49,8 @@ Group {
   xpos 410
   ypos 354
  }
-set N75e88a80 [stack 0]
-push $N75e88a80
+set N3beb0830 [stack 0]
+push $N3beb0830
  Axis2 {
   inputs 2
   translate {0 {hei_cam} 0}
